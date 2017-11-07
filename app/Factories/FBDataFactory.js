@@ -22,5 +22,20 @@ app.factory('FBDataFactory', [
                 });
             })
         };
-    return {getAllContent}; 
+
+        // Returns specific content based on Id
+        const getContent = (id) => {
+            return $q((resolve, reject) => {
+                $http.get(`${FBCreds.databaseURL}/content/${id}.json`)
+                .then((content) => {
+                    console.log("content", content);
+                    resolve(content.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+    return {getAllContent,
+            getContent}; 
 }]);

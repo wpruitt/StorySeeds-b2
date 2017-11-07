@@ -1,0 +1,26 @@
+'use strict';
+
+// FBDataFactory:
+// Factory page to interact with Firebase data objects
+app.factory('FBDataFactory', [
+    '$q',
+    '$http',
+    'FBCreds',
+    function($q, $http, FBCreds) {
+
+        // Returns all content
+        const getAllContent = () => {
+            return $q((resolve, reject) => {
+                $http.get(`${FBCreds.databaseURL}/content.json`)
+                .then((content) => {
+                    let allContent = Object.values(content.data);
+                    console.log("allContent", allContent, content.data);
+                    resolve(allContent);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            })
+        };
+    return {getAllContent}; 
+}]);

@@ -36,6 +36,22 @@ app.factory('FBDataFactory', [
                 });
             });
         };
+
+        // Returns all immediate branched content of specified seedId
+        const getBranches = (seedId) => {
+            return $q((resolve, reject) => {
+                $http.get(`${FBCreds.databaseURL}/content.json?orderBy="seedId"&equalTo="${seedId}"`)
+                .then((content) => {
+                    console.log("content", content);
+                    resolve(Object.values(content.data));
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
     return {getAllContent,
-            getContent}; 
+            getContent,
+            getBranches}; 
 }]);

@@ -5,8 +5,9 @@
 app.controller('ContentViewController', [
     '$scope',
     '$routeParams',
+    '$location',
     'FBDataFactory',
-    function($scope, $routeParams, FBDataFactory) {
+    function($scope, $routeParams, $location, FBDataFactory) {
 
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
@@ -16,7 +17,22 @@ app.controller('ContentViewController', [
         });
 
         // Retrieves branches of content
+        FBDataFactory.getBranches($routeParams.contentId)
+        .then((contentData) => {
+            $scope.branches = contentData;
+            // console.log("branches", $scope.branches);
+        })
+        .catch((error) => {
+            console.log("error",error);
+        });
 
+        // Retrieves content and assigns to scope
+        $scope.getBranch = function(contentId) {
+            FBDataFactory.getContent(contentId)
+            .then((content) => {
+                console.log("content", content);
+                $location.url(`content/${content.title}/${content.id}`);
+            });
+	};
     } 
-
 ]);

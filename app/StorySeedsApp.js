@@ -4,8 +4,6 @@
 const app = angular.module('StorySeedsApp', [
   'ngRoute',
   'ngSanitize',
-  'StorySeedsApp.view1',
-  'StorySeedsApp.view2',
   'StorySeedsApp.version'
 ]);
 
@@ -24,7 +22,7 @@ app.config([
     templateUrl: 'Views/ContentView.html',
     controller: 'ContentViewController'
   })
-  .otherwise({redirectTo: '/view1'});
+  .otherwise({redirectTo: '/explore'});
 }]);
 
 app.run((FBCreds) => {

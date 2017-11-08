@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 const app = angular.module('StorySeedsApp', [
   'ngRoute',
+  'ngSanitize',
   'StorySeedsApp.view1',
   'StorySeedsApp.view2',
   'StorySeedsApp.version'

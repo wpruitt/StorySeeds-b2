@@ -19,6 +19,10 @@ app.config([
     templateUrl: 'Views/ExploreView.html',
     controller: 'ExploreController'
   })
+  .when("/content/:contentTitle/:contentId", {
+    templateUrl: 'Views/ContentView.html',
+    controller: 'ContentViewController'
+  })
   .otherwise({redirectTo: '/view1'});
 }]);
 

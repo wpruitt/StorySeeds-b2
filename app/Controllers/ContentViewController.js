@@ -11,7 +11,7 @@ app.controller('ContentViewController', [
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
         .then((content) => {
-            $scope.content - content;
+            $scope.content = content;
             console.log("content", $scope.content);
         });
 

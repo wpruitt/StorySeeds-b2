@@ -20,7 +20,7 @@ app.factory('FBDataFactory', [
                 .catch((error) => {
                     reject(error);
                 });
-            })
+            });
         };
 
         // Returns specific content based on Id

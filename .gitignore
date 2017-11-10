@@ -2,9 +2,15 @@ logs/*
 !.gitkeep
 node_modules/
 bower_components/
+Css/
 Values/FBCreds.js
-/.sass-cache
-Css/main.css.map
+.sass-cache/*
+.bowerrc
+.jshintrc
+.travis.yml
+package-lock.json
+e2e/*.js
+e2e/*.map
 tmp
 .DS_Store
 .idea

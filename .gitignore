@@ -3,6 +3,8 @@ logs/*
 node_modules/
 bower_components/
 Values/FBCreds.js
+/.sass-cache
+Css/main.css.map
 tmp
 .DS_Store
 .idea

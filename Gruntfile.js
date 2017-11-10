@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                 tasks: ['jshint']
             },
             sass: {
-                files: ['/app/Scss/**/*.scss'],
+                files: ['/app/Scss/*.scss'],
                 tasks: ['sass']
             }
         }

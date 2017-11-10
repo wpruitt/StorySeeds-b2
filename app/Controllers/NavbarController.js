@@ -17,7 +17,7 @@ app.controller('NavbarController', [
             console.log("Nav fbAuth firing");
             // if user exists, assigns isLoggedIn to true
             // and user data to currentUser scope
-            if(user) {
+            if(user){
                 console.log("userInfo", user);
                 $scope.isLoggedIn = true;
                 $scope.currentUser = user;

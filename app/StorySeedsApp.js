@@ -19,6 +19,18 @@ let isAuth = () => new Promise((resolve, reject) => {
   });
 });
 
+let notAuth = () => new Promise((resolve, reject) => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user) {
+      console.log("isAuth");
+      reject();
+    }else{
+      console.log("!isAuth");
+      resolve();
+    }
+  });
+});
+
 app.config([
   '$locationProvider', 
   '$routeProvider', 
@@ -30,16 +42,21 @@ app.config([
     templateUrl: 'Views/LoginView.html',
     controller: 'LoginController'
   })
+  .when("/register", {
+    resolve: {notAuth},
+    templateUrl: 'Views/RegisterView.html',
+    controller: 'RegisterController'
+  })
   .when("/logout", {
     templateUrl: 'Views/LogoutView.html',
-    controller:'LogoutController'
+    controller: 'LogoutController'
   })
   .when("/explore", {
     templateUrl: 'Views/ExploreView.html',
     controller: 'ExploreController'
   })
   .when("/content/:contentTitle/:contentId", {
-    resolve: {isAuth},
+
     templateUrl: 'Views/ContentView.html',
     controller: 'ContentViewController'
   })

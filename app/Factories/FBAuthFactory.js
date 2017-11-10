@@ -66,6 +66,7 @@ app.factory('FBAuthFactory', [
         };
 
         // Assigns current user information to currentUser variable 
+        /* Search in other projects */
         let getUser = function(){
             return currentUser;
         };  

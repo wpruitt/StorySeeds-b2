@@ -7,6 +7,18 @@ const app = angular.module('StorySeedsApp', [
   'StorySeedsApp.version'
 ]);
 
+let isAuth = () => new Promise((resolve, reject) => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user) {
+      console.log("isAuth");
+      resolve();
+    }else{
+      console.log("!isAuth");
+      reject();
+    }
+  });
+});
+
 app.config([
   '$locationProvider', 
   '$routeProvider', 
@@ -27,6 +39,7 @@ app.config([
     controller: 'ExploreController'
   })
   .when("/content/:contentTitle/:contentId", {
+    resolve: {isAuth},
     templateUrl: 'Views/ContentView.html',
     controller: 'ContentViewController'
   })

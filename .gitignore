@@ -14,3 +14,4 @@ e2e/*.map
 tmp
 .DS_Store
 .idea
+.vscode/

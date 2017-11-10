@@ -8,12 +8,12 @@ creating anything to expand on the ideas and stories existing.
 Intricate webs can be weaved and expanded on in whatever ways the user can imagine,
 or continue on down one line, neverending.
 
-Currently (10 Nov 17):
 Rebuilding in Angular JS
-https://github.com/wpruitt/StorySeeds-b2
+Original:
+https://github.com/wpruitt/StorySeeds
 Planning on React reader
 
-### Built with:
+### Building with:
 
 - AngularJS
 - Bootstrap

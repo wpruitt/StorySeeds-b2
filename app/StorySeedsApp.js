@@ -14,6 +14,14 @@ app.config([
   $locationProvider.hashPrefix('!');
 
   $routeProvider
+  .when("/login", {
+    templateUrl: 'Views/LoginView.html',
+    controller: 'LoginController'
+  })
+  .when("/logout", {
+    templateUrl: 'Views/LogoutView.html',
+    controller:'LogoutController'
+  })
   .when("/explore", {
     templateUrl: 'Views/ExploreView.html',
     controller: 'ExploreController'

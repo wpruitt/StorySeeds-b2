@@ -20,7 +20,7 @@ app.controller('LoginController', [
         };
 
         // On authorization state change
-        firebase.auth().onAuthStateChanges(user => {
+        firebase.auth().onAuthStateChanged(user => {
             // if user exists redirect to /explore
             if(user) {
                 $location.url('/explore');

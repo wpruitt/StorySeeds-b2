@@ -2,4 +2,8 @@ $prim: #0f0c0c;
 $sec: #206215;
 $ter: #af5a1e;
 
+body {
+    padding: 55px 0px;
+}
+
 @import '_Navbar.scss';

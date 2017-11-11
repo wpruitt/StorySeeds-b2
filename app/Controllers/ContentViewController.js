@@ -33,6 +33,10 @@ app.controller('ContentViewController', [
                 console.log("content", content);
                 $location.url(`content/${content.title}/${content.id}`);
             });
-	};
+        };
+        // Creates branch obj to page content
+        $scope.createBranch = function(contentId) {
+            $location.url(`/createbranch/${contentId}`);
+        };
     } 
 ]);

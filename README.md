@@ -10,7 +10,7 @@ or continue on down one line, neverending.
 
 Rebuilding in Angular JS
 Original:
-https://github.com/wpruitt/StorySeeds
+https://github.com/wpruitt/StorySeed
 Planning on React reader
 
 ### Building with:

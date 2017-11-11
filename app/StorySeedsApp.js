@@ -51,14 +51,23 @@ app.config([
     templateUrl: 'Views/LogoutView.html',
     controller: 'LogoutController'
   })
+  .when("/upload", {
+    resolve: {isAuth},
+    templateUrl: 'Views/UploadView.html',
+    controller: 'UploadController'
+  })
   .when("/explore", {
     templateUrl: 'Views/ExploreView.html',
     controller: 'ExploreController'
   })
   .when("/content/:contentTitle/:contentId", {
-
     templateUrl: 'Views/ContentView.html',
     controller: 'ContentViewController'
+  })
+  .when("/createbranch/:contentId", {
+    resolve: {isAuth},
+    templateUrl: 'Views/CreateBranchView.html',
+    controller: 'CreateBranchController'
   })
   .otherwise({redirectTo: '/explore'});
 }]);

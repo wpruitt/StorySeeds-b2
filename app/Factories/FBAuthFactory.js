@@ -66,9 +66,19 @@ app.factory('FBAuthFactory', [
         };
 
         // Assigns current user information to currentUser variable 
-        /* Search in other projects */
-        let getUser = function(){
-            return currentUser;
+        /* Search in other projects - relies on other functions to work */
+        let getUser = function() {
+            return new Promise ((resolve, reject) => {
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if(user){
+                        currentUser = user;
+                        console.log("FBAuthFactory.getUser", user);
+                        resolve(user);
+                    }else{
+                        resolve();
+                    }
+                });
+            });
         };  
         
         return {FBRegisterUser,

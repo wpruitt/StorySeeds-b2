@@ -10,17 +10,17 @@ app.controller('ProfileController', [
     '$route',
     function($scope, FBAuthFactory, FBDataFactory, $location, $route) {
         
-        // Instantiate profile variable as empty string
-        let profile = "";
-        // Instantiate userKey variable as empty string
-        let userKey = "";
         // Assign Firbase user object to currentUser variable on page load
         /* Broken? */
-        let currentUser = FBAuthFactory.getUser();
-        console.log("currentUser", currentUser);
+		let currentUser = firebase.auth().currentUser;
+		console.log("currentUser", currentUser);
+        // Instantiate profile variable as empty string
+        let profile = {};
+        // Instantiate userKey variable as empty string
+        let userKey = "";
 
         // On page load => retrieve current logged in user
-        FBDataFactory.getUser(currentUser)
+        FBDataFactory.getUser(currentUser.uid)
         // assigns userData to user variable and profile data to
         // profile variable and scope
         .then((userData) => {
@@ -32,7 +32,7 @@ app.controller('ProfileController', [
         })
         // assigns content of current user to scope
         .then(() => {
-            FBDataFactory.getUsersContent(currentUser)
+            FBDataFactory.getUsersContent(currentUser.uid)
             .then((usersContents) => {
                 $scope.usersContents = usersContents;
                 console.log("usersContent", usersContents);
@@ -88,7 +88,7 @@ app.controller('ProfileController', [
 	// saves edited email to Firebase
 	$scope.editEmail = function() {
 		console.log("displayName", $scope.editedDisplayName);
-		FBDataFactory.editEmail($scope.editedEmail, userKey)
+		FBDataFactory.editProfile($scope.editedEmail, userKey)
 		.then((data) => {
 			$route.reload();
 		})

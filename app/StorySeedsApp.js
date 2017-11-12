@@ -57,6 +57,7 @@ app.config([
     controller: 'UploadController'
   })
   .when("/profile/:userId", {
+    resolve: {isAuth},
     templateUrl: 'Views/ProfileView.html',
     controller: 'ProfileController'
   })

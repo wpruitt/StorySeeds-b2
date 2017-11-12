@@ -56,6 +56,10 @@ app.config([
     templateUrl: 'Views/UploadView.html',
     controller: 'UploadController'
   })
+  .when("/profile/:userId", {
+    templateUrl: 'Views/ProfileView.html',
+    controller: 'ProfileController'
+  })
   .when("/explore", {
     templateUrl: 'Views/ExploreView.html',
     controller: 'ExploreController'

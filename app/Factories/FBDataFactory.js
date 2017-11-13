@@ -113,6 +113,48 @@ app.factory('FBDataFactory', [
             });
         };
 
+        // Creates a content object in DB +
+        const createContent = (contentObj) => {
+            return $q((resolve, reject) =>{
+                let object = JSON.stringify(contentObj);
+                $http.post(`${FBCreds.databaseURL}/content.json`, object)
+                .then ((contentId) => {
+                    resolve(contentId);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
+        // Assigns id to content object
+        // Refactor: add to createContent, should be able to troubleshoot simultaneous call issue now
+        const addId = (contentId, idObj) => {
+            return $q((resolve, reject) => {
+                let object = JSON.stringify(idObj);
+                $http.patch(`${FBCreds.databaseURL}/content/${contentId}.json`, object)
+                .then ((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
+        // Adds branch id to content object
+        const addBranchId = (contentId, branchObj) => {
+            return $q((resolve, reject) => {
+                let object = JSON.stringify(branchObj);
+                $http.patch(`${FBCreds.databaseURL}/content/${contentId}/branchIds.json`, object)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
 
     return {getAllContent,
             getContent,
@@ -120,5 +162,8 @@ app.factory('FBDataFactory', [
             getUsersContent,
             createUser,
             getUser,
-            editProfile}; 
+            editProfile,
+            createContent,
+            addId,
+            addBranchId}; 
 }]);

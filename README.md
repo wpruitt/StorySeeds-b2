@@ -33,3 +33,24 @@ If you would like to give the shell application a try
 3. Run ```npm install```
 4. Run ```grunt``` *compile sass, etc...*
 5. Run app ```npm start``` *suggest from powershell for windows users*
+
+### Database:
+
+To setup access to Firebase 
+Create FBCreds.js
+```
+mkdir Values
+cd Values
+touch FBCreds.js
+```
+FBCreds.js(Skeleton):
+```
+'use strict';
+
+app.constant('FBCreds', {    
+	  apiKey: "",
+    authDomain: "",
+    databaseURL: ""
+});
+```
+Email me if you'd like access to my DB, but I'll be making changes and can't guarantee data persistence.

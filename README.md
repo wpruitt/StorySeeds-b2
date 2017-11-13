@@ -16,10 +16,11 @@ Planning on React reader
 ### Building with:
 
 - AngularJS
-⋅⋅⋅_[Angular Seed](https://github.com/angular/angular-seed)_
-⋅⋅⋅_[npm](https://www.npmjs.com/)_
-⋅⋅⋅_[Bower](https://bower.io/)_
-⋅⋅⋅_[Grunt](https://gruntjs.com/)_
+
+   _[Angular Seed](https://github.com/angular/angular-seed)_  
+   _[npm](https://www.npmjs.com/)_  
+   _[Bower](https://bower.io/)_  
+   _[Grunt](https://gruntjs.com/)_  
 *please see cooresponding .json files for specific dependencies*
 - Bootstrap
 - Firebase

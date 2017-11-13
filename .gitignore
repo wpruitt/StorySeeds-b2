@@ -3,7 +3,7 @@ logs/*
 node_modules/
 bower_components/
 Css/
-Values/FBCreds.js
+app/Values/FBCreds.js
 .sass-cache/*
 .bowerrc
 .jshintrc

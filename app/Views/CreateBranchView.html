@@ -14,7 +14,7 @@
 		</div>
 		<div class="form-group">
 			<label for="content">Content</label>
-			<ng-quill-editor ng-model="obj.content" on-editor-created="editorCreated(editor)" on-content-changed="contetnChanged(editor, html, text)" class="content-textarea" min-length="10" placeholder="{{placeholder.content}}"></ng-quill-editor>
+			<textarea type="textarea" maxlength="1000" rows="10" class="form-control description-textarea" ng-model="obj.content"   min-length="10" placeholder="{{placeholder.content}}"></textarea>
 			<span id="counter">0</span>
 		</div>
 			<button class="mybutton" ng-click="submit()">Submit</button>

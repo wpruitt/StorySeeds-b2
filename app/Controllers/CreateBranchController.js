@@ -44,6 +44,7 @@ app.controller('CreateBranchController', [
                 let idObj = {
                     id: response.data.name
                 };
+                console.log("idObj", idObj);
                 // Adds response id to obj 
                 FBDataFactory.addId(response.data.name, idObj)
                 .then((response) => {
@@ -51,10 +52,11 @@ app.controller('CreateBranchController', [
                         let branchObj = {
                         [response.data.id] : $routeParams.contentId
                     };
-                    // Adds branchId to obj then redirects to /explore
+                    console.log('branchObj', branchObj, response.data.name);
+                    // Adds branchId to obj then redirects to new content
                     FBDataFactory.addBranchId($routeParams.contentId, branchObj)
                     .then((response) => {
-                        $location.url("/explore");
+                        $location.url(`content/${$scope.obj.title}/${idObj.id}`);
                     })
                     .catch((error) => {
                         console.log("error", error);

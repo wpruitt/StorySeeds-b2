@@ -11,12 +11,12 @@ app.controller('UploadController', [
     '$timeout',
     function($scope, $routeParams, FBDataFactory, FBAuthFactory, $location, $timeout) {
 
-        // Assigns current logged in user to currentUser variable +
-        let currentUser = FBAuthFactory.getUser();
+        // Assigns current logged in user to currentUserid variable +
+        let currentUserid = firebase.auth().currentUser.uid;
     
         // Content object +
         $scope.obj = {
-            uid: currentUser,
+            uid: currentUserid,
             type: "",
             title: "",
             description: "",

@@ -12,7 +12,7 @@ app.controller('CreateBranchController', [
     function($scope, $routeParams, FBDataFactory, FBAuthFactory, $location, $timeout) {
 
         // Assigns current logged in user to currentUser variable
-        let currentUserid = FBAuthFactory.getUser().uid;
+        let currentUserid = firebase.auth().currentUser.uid;
         
         // Assigns user inputs to scope obj
         $scope.obj = {

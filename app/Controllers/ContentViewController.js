@@ -45,9 +45,9 @@ app.controller('ContentViewController', [
             $location.url(`/createbranch/${contentId}`);
         };
 
-        // Assigns +
+        // Returns true/false if obj has branched content
         let objHasBranches = (obj) => {
-            for(var key in obj) {
+            for(var key in obj){
                 if(obj.hasOwnProperty(key))
                     return true;
             }

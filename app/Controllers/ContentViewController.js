@@ -11,7 +11,8 @@ app.controller('ContentViewController', [
     '$route',
     function($scope, FBAuthFactory, $routeParams, $location, FBDataFactory, $route) {
 
-        let currentUser = FBAuthFactory.getUser();
+        // Assigns current logged in user to currentUser variable
+        let currentUserid = FBAuthFactory.getUser().uid;
 
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
@@ -29,7 +30,7 @@ app.controller('ContentViewController', [
         .catch((error) => {
             console.log("error",error);
         });
-
+        
         // Retrieves content and assigns to scope
         $scope.getBranch = function(contentId) {
             FBDataFactory.getContent(contentId)
@@ -53,15 +54,19 @@ app.controller('ContentViewController', [
             return false;
         };
 
-        // Assigns true/false based on equality of currentUser and content owner
-        $scope.showDelBtn = function(contentId) {
-            console.log("current/content", currentUser, contentId);
-            if(currentUser === contentId){
-                return true;
-            }else{
-                return false;
-            }
-        };
+        $scope.showDelBtn = true;
+
+        // // Assigns true/false based on equality of currentUser and content owner
+        // let showDelBtn = function(contentuid) {
+        //     console.log("current/content", currentUserid, contentuid);
+        //     if(currentUserid === contentuid){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // };
+
+        console.log("showDelBtn", $scope.showDelBtn);
 
         // Deletes content/makes content anon
         $scope.deleteContent = function(contentId) {

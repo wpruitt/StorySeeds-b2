@@ -194,7 +194,7 @@ app.factory('FBDataFactory', [
                 });
             });
         };
-    
+
     return {getAllContent,
             getContent,
             getBranches,

@@ -12,14 +12,12 @@ app.controller('ExploreController', [
         FBDataFactory.getAllContent()
         .then((contents) => {
             $scope.contents = contents;
-            console.log("contents", $scope.contents);
         });
 
         // Retrieve Content of specified contentId
         $scope.getContent = function(contentId) {
             FBDataFactory.getContent(contentId)
             .then((content) => {
-                console.log("content", content);
                 $location.url(`content/${content.title}/${content.id}`);
             });
         };

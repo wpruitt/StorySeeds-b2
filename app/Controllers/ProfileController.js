@@ -63,49 +63,41 @@ app.controller('ProfileController', [
     
     // saves edited profilePicture to Firebase
 	$scope.editProfilePicture = function() {
-		console.log("image", $scope.editedImage);
 		FBDataFactory.editProfile($scope.editedImage, userKey)
 		.then((data) => {
 			$route.reload();
 		})
 		.catch((error) => {
-			console.log("error", error);
 		});
 	};
 
 	// saves edited displayName to Firebase
 	$scope.editDisplayName = function() {
-		console.log("displayName", $scope.editedDisplayName);
 		FBDataFactory.editProfile($scope.editedDisplayName, userKey)
 		.then((data) => {
 			$route.reload();
 		})
 		.catch((error) => {
-			console.log("error", error);
 		});
 	};
 
 	// saves edited email to Firebase
 	$scope.editEmail = function() {
-		console.log("displayName", $scope.editedDisplayName);
 		FBDataFactory.editProfile($scope.editedEmail, userKey)
 		.then((data) => {
 			$route.reload();
 		})
 		.catch((error) => {
-			console.log("error", error);
 		});
 	};
 
 	// saves edited Bio to Firebase
 	$scope.editBio = function() {
-		console.log("bio", $scope.editedBio);
 		FBDataFactory.editProfile($scope.editedBio, userKey)
 		.then((data) => {
 			$route.reload();
 		})
 		.catch((error) => {
-			console.log("error", error);
 		});
 	};
 
@@ -113,7 +105,6 @@ app.controller('ProfileController', [
 	$scope.getContent = function(contentId) {
 		FBDataFactory.getContent(contentId)
 		.then((content) => {
-			console.log("content", content);
 			$location.url(`content/${content.title}/${content.id}`);
 		});
 	};

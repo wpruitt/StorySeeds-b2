@@ -12,7 +12,7 @@
 		</div>
 		<span class="button-holder">
 			<button class="mybutton" ng-click="createBranch(content.id)">Create Branch</button>
-			<button class="mybutton" ng-if="showDelBtn" data-toggle="modal" data-target="#delModal">Delete Content</button>
+			<button class="mybutton" ng-if="showDelBtn(content.uid)" data-toggle="modal" data-target="#delModal">Delete Content</button>
 		</span>
 	</div>
 </div>

@@ -12,8 +12,8 @@ app.controller('ContentViewController', [
     function($scope, FBAuthFactory, $routeParams, $location, FBDataFactory, $route) {
 
         // Assigns current logged in user to currentUser variable
-        let currentUserid = FBAuthFactory.getUser().uid;
-
+        let currentUserid = firebase.auth().currentUser;
+        console.log('currentUserid', currentUserid);
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
         .then((content) => {
@@ -54,17 +54,15 @@ app.controller('ContentViewController', [
             return false;
         };
 
-        $scope.showDelBtn = true;
-
-        // // Assigns true/false based on equality of currentUser and content owner
-        // let showDelBtn = function(contentuid) {
-        //     console.log("current/content", currentUserid, contentuid);
-        //     if(currentUserid === contentuid){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-        // };
+        // Assigns true/false based on equality of currentUser and content owner
+        let showDelBtn = function(contentuid) {
+            console.log("current/content", currentUserid, contentuid);
+            if(currentUserid === contentuid){
+                return true;
+            }else{
+                return false;
+            }
+        };
 
         console.log("showDelBtn", $scope.showDelBtn);
 

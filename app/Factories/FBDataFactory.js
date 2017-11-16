@@ -156,6 +156,45 @@ app.factory('FBDataFactory', [
             });
         };
 
+        // Deletes user object from DB
+        const delUser = (userId) => {
+            return $q((resolve, reject) => {
+                $http.delete(`${FBCreds.databaseURL}/users.json?orderBy="uid"&equalTo="${userId}"`)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
+        // Unassigns user to content object
+        const makeContentAnon = (contentId) => {
+            return $q((resolve, reject) => {
+                $http.delete(`${FBCreds.databaseURL}/content/${contentId}/uid.json`)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
+        // Deletes content object
+        const deleteContent = (contentId) => {
+            return $q((resolve, reject) => {
+                $http.delete(`${FBCreds.databaseURL}/content/${contentId}.json`)
+                .then((response) => {
+                    resolve(response);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
     return {getAllContent,
             getContent,
             getBranches,
@@ -165,5 +204,8 @@ app.factory('FBDataFactory', [
             editProfile,
             createContent,
             addId,
-            addBranchId}; 
+            addBranchId,
+            delUser,
+            makeContentAnon,
+            deleteContent}; 
 }]);

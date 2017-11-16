@@ -12,11 +12,11 @@ app.controller('CreateBranchController', [
     function($scope, $routeParams, FBDataFactory, FBAuthFactory, $location, $timeout) {
 
         // Assigns current logged in user to currentUser variable
-        let currentUser = FBAuthFactory.getUser();
+        let currentUserid = FBAuthFactory.getUser().uid;
         
         // Assigns user inputs to scope obj
         $scope.obj = {
-            uid: currentUser,
+            uid: currentUserid,
             type: "",
             title: "",
             description: "",

@@ -4,10 +4,15 @@
 // Controller handling DOM <-> DB interactions for ContentView page
 app.controller('ContentViewController', [
     '$scope',
+    'FBAuthFactory',
     '$routeParams',
     '$location',
     'FBDataFactory',
-    function($scope, $routeParams, $location, FBDataFactory) {
+    '$route',
+    function($scope, FBAuthFactory, $routeParams, $location, FBDataFactory, $route) {
+
+        // Assigns current logged in user to currentUser variable
+        let currentUserid = FBAuthFactory.getUser().uid;
 
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
@@ -25,7 +30,7 @@ app.controller('ContentViewController', [
         .catch((error) => {
             console.log("error",error);
         });
-
+        
         // Retrieves content and assigns to scope
         $scope.getBranch = function(contentId) {
             FBDataFactory.getContent(contentId)
@@ -34,9 +39,82 @@ app.controller('ContentViewController', [
                 $location.url(`content/${content.title}/${content.id}`);
             });
         };
+
         // Creates branch obj to page content
         $scope.createBranch = function(contentId) {
             $location.url(`/createbranch/${contentId}`);
+        };
+
+        // Assigns +
+        let objHasBranches = (obj) => {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                    return true;
+            }
+            return false;
+        };
+
+        $scope.showDelBtn = true;
+
+        // // Assigns true/false based on equality of currentUser and content owner
+        // let showDelBtn = function(contentuid) {
+        //     console.log("current/content", currentUserid, contentuid);
+        //     if(currentUserid === contentuid){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // };
+
+        console.log("showDelBtn", $scope.showDelBtn);
+
+        // Deletes content/makes content anon
+        $scope.deleteContent = function(contentId) {
+            // if object has branched content
+            // make content anonymous
+            if(objHasBranches($scope.branches)) {
+                console.log("goanon", true, $scope.branches);
+                FBDataFactory.makeContentAnon(contentId)
+                .then((response) => {
+                    $('.modal-backdrop').remove();
+                    console.log("response", response);
+                    $route.reload();
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                });
+            // else delete the object
+            }else{
+                console.log("candel", false);
+                FBDataFactory.deleteContent(contentId)
+                .then((response) => {
+                    $('.modal-backdrop').remove();
+                    console.log("response", response);
+                    console.log("scope.content.uid", $scope.content.uid);
+                    if ($scope.content.seedId) {
+                        $location.url(`/content/${$scope.content.seedId}`);
+                        $route.reload();
+                    }else{
+                        $location.url('/explore');
+                        $route.reload();
+                    }
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                });
+            }
+        };
+
+        // Removes creator identifier from object
+        $scope.makeAnon = function(contentId){
+            FBDataFactory.makeContentAnon(contentId)
+            .then((response) => {
+                console.log("response", response);
+                $route.reload();
+            })
+            .catch((error) => {
+                console.log("error", error);
+            });
         };
     } 
 ]);

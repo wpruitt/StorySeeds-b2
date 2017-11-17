@@ -4,8 +4,9 @@
 // Controller handling DOM <-> DB interactions for Navbar
 app.controller('NavbarController', [
     '$scope', 
-    'FBAuthFactory', 
-    function($scope, FBAuthFactory) {
+    'FBAuthFactory',
+    'UserService', 
+    function($scope, FBAuthFactory, UserService) {
 
         // Sets currentUser variable
         $scope.currentUser = null;
@@ -21,13 +22,22 @@ app.controller('NavbarController', [
                 console.log("userInfo", user);
                 $scope.isLoggedIn = true;
                 $scope.currentUser = user;
+                UserService.setCurrentUser(user);
                 console.log("$scope.isLoggedIn", $scope.isLoggedIn);
             }else{
                 console.log("no user");
                 $scope.isLoggedIn = false;
                 $scope. currentUser = null;
+                UserService.setCurrentUser(null);
                 console.log("Error-$scope.isLoggedIn", $scope.isLoggedIn);
             }
         });
+
+        $scope.$watch(
+            "$scope.currentUser",
+            function(newValue, oldValue){
+                console.log("$scope.$watch", newValue, oldValue);
+            }
+        );
     }
 ]);

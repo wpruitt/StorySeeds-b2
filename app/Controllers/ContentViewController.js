@@ -4,20 +4,30 @@
 // Controller handling DOM <-> DB interactions for ContentView page
 app.controller('ContentViewController', [
     '$scope',
-    'FBAuthFactory',
+    'UserService',
     '$routeParams',
     '$location',
     'FBDataFactory',
     '$route',
-    function($scope, FBAuthFactory, $routeParams, $location, FBDataFactory, $route) {
+    function($scope, UserService, $routeParams, $location, FBDataFactory, $route) {
 
         // Assigns current logged in user to currentUser variable
-        let currentUserid = FBAuthFactory.getUser().uid;
-
+        $scope.currentUserid = UserService.getCurrentUser().uid;
+        console.log("$scope.currentUserid", $scope.currentUserid);
+        let contentuid = {};
+        $scope.$watch(
+            "contentuid",
+            function(){
+                console.log("$scope.$watch-contentuid", contentuid);
+            }
+        );
+        
         // Retrieves contentspecified by contentId in url
         FBDataFactory.getContent($routeParams.contentId)
         .then((content) => {
             $scope.content = content;
+            contentuid = content.uid;
+            console.log("contentuid", contentuid);
             console.log("content", $scope.content);
         });
 
@@ -54,17 +64,15 @@ app.controller('ContentViewController', [
             return false;
         };
 
-        $scope.showDelBtn = true;
-
-        // // Assigns true/false based on equality of currentUser and content owner
-        // let showDelBtn = function(contentuid) {
-        //     console.log("current/content", currentUserid, contentuid);
-        //     if(currentUserid === contentuid){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-        // };
+        // Assigns true/false based on equality of currentUser and content owner
+        $scope.showDelBtn = function(x) {
+            console.log("current/content", $scope.currentUserid, x);
+            if($scope.currentUserid === x){
+                return true;
+            }else{
+                return false;
+            }
+        };
 
         console.log("showDelBtn", $scope.showDelBtn);
 

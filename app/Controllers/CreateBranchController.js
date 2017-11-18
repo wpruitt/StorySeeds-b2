@@ -17,7 +17,7 @@ app.controller('CreateBranchController', [
         // Assigns user inputs to scope obj
         $scope.obj = {
             uid: currentUserid,
-            type: "",
+            type: "branch",
             title: "",
             description: "",
             image: "",

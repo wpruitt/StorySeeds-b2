@@ -17,7 +17,7 @@ app.controller('UploadController', [
         // Content object +
         $scope.obj = {
             uid: currentUserid,
-            type: "",
+            type: "seed",
             title: "",
             description: "",
             image: "",

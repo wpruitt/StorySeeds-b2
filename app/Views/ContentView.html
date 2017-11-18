@@ -1,9 +1,7 @@
 <div class="container">
 	<div class="card">
 		<div class="card-block">
-			
 				<img class="card-image img-responsive" ng-src="{{content.image}}">
-			
 			<aside class="card-title-description">
 				<h2>{{content.title}}</h2>
 				<label>Description: </label>
@@ -14,14 +12,15 @@
 			<button class="mybutton" ng-click="createBranch(content.id)">Create Branch</button>
 			<button class="mybutton" ng-if="showDelBtn(content.uid)" data-toggle="modal" data-target="#delModal">Delete Content</button>
 		</span>
+		<span><a ng-if="content.seedId" ng-click="getBranch(content.seedId)">&laquo;Previous</a></span>
 	</div>
 </div>
 	<hr>
-	<div class="container-fluid">
-		<div class="row">
-			<p ng-bind-html="content.content" class="content col-xs-8 col-xs-offset-2"></p>
-		</div>
+<div class="container-fluid">
+	<div class="row">
+		<p ng-bind-html="content.content" class="content col-xs-8 col-xs-offset-2"></p>
 	</div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -46,7 +45,6 @@
 <div class="filter-container container-fluid">
 	<input class="filter" type="filter" placeholder="Filter" ng-model="searchText">
 </div>
-
 
 <div class="card-deck">
 	<div class="card col-xs-6 col-sm-4 col-md-4 col-lg-3" ng-repeat="branch in branches | filter:searchText">

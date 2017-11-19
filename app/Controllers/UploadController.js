@@ -26,7 +26,7 @@ app.controller('UploadController', [
             NSFW: false,
             seedId: "",
             content: "",
-            branchIds: ""
+            created: ""
         };
         
         // Placeholder for description/content to explain usage
@@ -37,6 +37,7 @@ app.controller('UploadController', [
         
         // Submits user object via createContent function
         $scope.submit = function() {
+            $scope.obj.created = new Date();
             FBDataFactory.createContent($scope.obj)
             .then((response) => {
                 console.log("$scope.obj", $scope.obj);

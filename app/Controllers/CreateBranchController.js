@@ -24,9 +24,12 @@ app.controller('CreateBranchController', [
             genre: ["test1", "test2"],
             tags: ["test1", "test2"],
             NSFW: false,
-            seedId: $routeParams.contentId,
-            content: ""
+            branchedfrom: $routeParams.contentId,
+            content: "",
+            created: ""
         };
+
+        console.log($scope.obj);
 
         // Placeholder for description/content to explain usage
         // Sets placeholders for descriptions and content inputs
@@ -37,6 +40,7 @@ app.controller('CreateBranchController', [
         
         // Submits obj scope to Firebase DB
         $scope.submit = function() {
+            $scope.obj.created = new Date();
             FBDataFactory.createContent($scope.obj)
             .then((response) => {
                 console.log("$scope.obj", $scope.obj);

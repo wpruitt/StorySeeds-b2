@@ -24,7 +24,7 @@ app.controller('CreateBranchController', [
             genre: ["test1", "test2"],
             tags: ["test1", "test2"],
             NSFW: false,
-            branchedfrom: $routeParams.contentId,
+            seedId: $routeParams.contentId,
             content: "",
             created: ""
         };

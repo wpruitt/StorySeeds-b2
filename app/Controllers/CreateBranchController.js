@@ -14,6 +14,14 @@ app.controller('CreateBranchController', [
         // Assigns current logged in user to currentUser variable
         let currentUserid = firebase.auth().currentUser.uid;
         
+        $scope.checkboxModel = {
+            Fantasy: false,
+            Horror: false,
+            Mystery: false,
+            ["Science Fiction"]: false,
+            Romance: false
+        };
+        
         // Assigns user inputs to scope obj
         $scope.obj = {
             uid: currentUserid,
@@ -21,7 +29,7 @@ app.controller('CreateBranchController', [
             title: "",
             description: "",
             image: "",
-            genre: ["test1", "test2"],
+            genre: $scope.checkboxModel,
             tags: ["test1", "test2"],
             NSFW: false,
             seedId: $routeParams.contentId,
@@ -29,15 +37,13 @@ app.controller('CreateBranchController', [
             created: ""
         };
 
-        console.log($scope.obj);
-
         // Placeholder for description/content to explain usage
         // Sets placeholders for descriptions and content inputs
         $scope.placeholder = {
             description: `Give a little description of your branch. Talk about any large changes from your seeded content.`,
             content: "Type out story here."
         };
-        
+
         // Submits obj scope to Firebase DB
         $scope.submit = function() {
             $scope.obj.created = new Date();

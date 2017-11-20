@@ -14,6 +14,14 @@ app.controller('UploadController', [
         // Assigns current logged in user to currentUserid variable +
         let currentUserid = firebase.auth().currentUser.uid;
     
+        $scope.checkboxModel = {
+            Fantasy: false,
+            Horror: false,
+            Mystery: false,
+            ["Science Fiction"]: false,
+            Romance: false
+        };
+
         // Content object +
         $scope.obj = {
             uid: currentUserid,
@@ -21,7 +29,7 @@ app.controller('UploadController', [
             title: "",
             description: "",
             image: "",
-            genre: ["test1", "test2"],
+            genre: $scope.checkboxModel,
             tags: ["test1", "test2"],
             NSFW: false,
             seedId: "",

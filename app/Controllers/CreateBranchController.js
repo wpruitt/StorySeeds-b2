@@ -21,6 +21,9 @@ app.controller('CreateBranchController', [
             ["Science Fiction"]: false,
             Romance: false
         };
+
+        // Tags object
+        $scope.tags =[];
         
         // Assigns user inputs to scope obj
         $scope.obj = {
@@ -30,7 +33,7 @@ app.controller('CreateBranchController', [
             description: "",
             image: "",
             genre: $scope.checkboxModel,
-            tags: ["test1", "test2"],
+            tags: $scope.tags,
             NSFW: false,
             seedId: $routeParams.contentId,
             content: "",

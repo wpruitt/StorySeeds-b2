@@ -22,6 +22,9 @@ app.controller('UploadController', [
             Romance: false
         };
 
+        // Tags object
+        $scope.tags =[];
+
         // Content object +
         $scope.obj = {
             uid: currentUserid,
@@ -30,7 +33,7 @@ app.controller('UploadController', [
             description: "",
             image: "",
             genre: $scope.checkboxModel,
-            tags: ["test1", "test2"],
+            tags: $scope.tags,
             NSFW: false,
             seedId: "",
             content: "",

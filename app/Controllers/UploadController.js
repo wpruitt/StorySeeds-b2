@@ -21,7 +21,7 @@ app.controller('UploadController', [
             title: "",
             description: "",
             image: "",
-            genre: ["test1", "test2"],
+            genre: $scope.checkboxModel,
             tags: ["test1", "test2"],
             NSFW: false,
             seedId: "",
@@ -33,6 +33,11 @@ app.controller('UploadController', [
         $scope.placeholder = {
             description: `Tell us what your seed will grow into. Keep in mind that others may take your idea in a different direction. Explain the theme, identify key characters, initial setting, etc....`,
             content: `Write out your Story here.`
+        };
+
+        $scope.checkboxModel = {
+            Fantasy: false,
+            Horror: false
         };
         
         // Submits user object via createContent function

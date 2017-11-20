@@ -8,6 +8,12 @@
 			<label for="image">Image-Url</label>
 			<input type="text" class="form-control" ng-model="obj.image">
 		</div>
+		<div class="form-group" id="checkboxes">
+			<label>Fantasy: <input type="checkbox" name="Fantasy" ng-model="checkboxModel.Fantasy" id="fantasyCheckbox"></label>
+			<label>Horror </label><input type="checkbox" name="Horror" ng-model="checkboxModel.Horror" id="horrorCheckbox">
+		</div>
+		<tt>value1 = {{checkboxModel.Fantasy}}</tt><br/>
+		<tt>value2 = {{checkboxModel.Horror}}</tt><br/>
 		<div class="form-group">
 			<label for="descripction">Description</label>
 			<textarea type="textarea" maxlength="500" rows="5" class="form-control description-textarea" ng-model="obj.description" placeholder="{{placeholder.description}}"></textarea>
@@ -15,9 +21,7 @@
 		<div class="form-group">
 			<label for="content">Content</label>
 			<textarea type="textarea" maxlength="1000" rows="10" class="form-control description-textarea" ng-model="obj.content"   min-length="10" placeholder="{{placeholder.content}}"></textarea>
-			<span id="counter">0</span>
 		</div>
 			<button class="mybutton" ng-click="submit()">Submit</button>
-	</form>
 	</form>
 </div>

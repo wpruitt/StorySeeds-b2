@@ -2,33 +2,37 @@
 
 // Profile Controller:
 // Controller handling DOM <-> DB interactions for Profile page
-app.controller('ProfileController', [
+app.controller('MyProfileController', [
     '$scope',
     'FBAuthFactory',
     'FBDataFactory',
     '$location',
     '$route',
-    '$routeParams',
-    function($scope, FBAuthFactory, FBDataFactory, $location, $route, $routeParams) {
+    function($scope, FBAuthFactory, FBDataFactory, $location, $route) {
+        
+        // Assign Firbase user object to currentUser variable on page load
+        /* Broken? */
+		let currentUser = firebase.auth().currentUser;
+		console.log("currentUser", currentUser);
         // Instantiate profile variable as empty string
         let profile = {};
         // Instantiate userKey variable as empty string
         let userKey = "";
 
         // On page load => retrieve current logged in user
-        FBDataFactory.getUser($routeParams.userId)
+        FBDataFactory.getUser(currentUser.uid)
         // assigns userData to user variable and profile data to
         // profile variable and scope
         .then((userData) => {
             let user = userData;
-            console.log("user", user, $routeParams.userId);
+            console.log("user", user, currentUser);
             userKey = Object.keys(user.data);
             $scope.profile = user.data[Object.keys(user.data)];
             profile = user.data[Object.keys(user.data)];
         })
         // assigns content of current user to scope
         .then(() => {
-            FBDataFactory.getUsersContent($routeParams.userId)
+            FBDataFactory.getUsersContent(currentUser.uid)
             .then((usersContents) => {
                 $scope.usersContents = usersContents;
                 console.log("usersContent", usersContents);

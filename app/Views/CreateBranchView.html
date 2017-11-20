@@ -8,12 +8,11 @@
 			<label for="image">Image-Url</label>
 			<input type="text" class="form-control" ng-model="obj.image">
 		</div>
-		<div class="form-group" id="checkboxes">
-			<label>Fantasy: <input type="checkbox" name="Fantasy" ng-model="checkboxModel.Fantasy" id="fantasyCheckbox"></label>
-			<label>Horror </label><input type="checkbox" name="Horror" ng-model="checkboxModel.Horror" id="horrorCheckbox">
+		<div class="form-group checkbox-group">
+			<span class="form-check" id="checkboxes" ng-repeat="(key, value) in checkboxModel">
+				<label class="form-check-label checkbox-label"> {{key}}: <input type="checkbox" class="form-check-input" name="{{key}}" ng-model="checkboxModel[key]" id="{{key}}Checkbox"></label>
+			</span>
 		</div>
-		<tt>value1 = {{checkboxModel.Fantasy}}</tt><br/>
-		<tt>value2 = {{checkboxModel.Horror}}</tt><br/>
 		<div class="form-group">
 			<label for="descripction">Description</label>
 			<textarea type="textarea" maxlength="500" rows="5" class="form-control description-textarea" ng-model="obj.description" placeholder="{{placeholder.description}}"></textarea>

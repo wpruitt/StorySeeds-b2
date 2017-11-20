@@ -16,7 +16,10 @@ app.controller('CreateBranchController', [
         
         $scope.checkboxModel = {
             Fantasy: false,
-            Horror: false
+            Horror: false,
+            Mystery: false,
+            ["Science Fiction"]: false,
+            Romance: false
         };
         
         // Assigns user inputs to scope obj
@@ -34,8 +37,6 @@ app.controller('CreateBranchController', [
             created: ""
         };
 
-        console.log($scope.obj);
-
         // Placeholder for description/content to explain usage
         // Sets placeholders for descriptions and content inputs
         $scope.placeholder = {
@@ -43,8 +44,6 @@ app.controller('CreateBranchController', [
             content: "Type out story here."
         };
 
-        
-        
         // Submits obj scope to Firebase DB
         $scope.submit = function() {
             $scope.obj.created = new Date();

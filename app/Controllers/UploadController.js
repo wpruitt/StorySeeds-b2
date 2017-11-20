@@ -14,6 +14,14 @@ app.controller('UploadController', [
         // Assigns current logged in user to currentUserid variable +
         let currentUserid = firebase.auth().currentUser.uid;
     
+        $scope.checkboxModel = {
+            Fantasy: false,
+            Horror: false,
+            Mystery: false,
+            ["Science Fiction"]: false,
+            Romance: false
+        };
+
         // Content object +
         $scope.obj = {
             uid: currentUserid,
@@ -33,11 +41,6 @@ app.controller('UploadController', [
         $scope.placeholder = {
             description: `Tell us what your seed will grow into. Keep in mind that others may take your idea in a different direction. Explain the theme, identify key characters, initial setting, etc....`,
             content: `Write out your Story here.`
-        };
-
-        $scope.checkboxModel = {
-            Fantasy: false,
-            Horror: false
         };
         
         // Submits user object via createContent function

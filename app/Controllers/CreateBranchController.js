@@ -24,7 +24,14 @@ app.controller('CreateBranchController', [
 
         // Tags object
         $scope.tags =[];
+
+        let seedId = "";
         
+        FBDataFactory.getContent($routeParams.contentId)
+        .then((content) => {
+            seedId = content.seedId;       
+        });
+            
         // Assigns user inputs to scope obj
         $scope.obj = {
             uid: currentUserid,
@@ -35,7 +42,8 @@ app.controller('CreateBranchController', [
             genre: $scope.checkboxModel,
             tags: $scope.tags,
             NSFW: false,
-            seedId: $routeParams.contentId,
+            seedId: "",
+            branchedfrom: $routeParams.contentId,
             content: "",
             created: ""
         };
@@ -49,6 +57,7 @@ app.controller('CreateBranchController', [
 
         // Submits obj scope to Firebase DB
         $scope.submit = function() {
+            $scope.obj.seedId = seedId;
             $scope.obj.created = new Date();
             FBDataFactory.createContent($scope.obj)
             .then((response) => {

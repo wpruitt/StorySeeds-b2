@@ -5,7 +5,10 @@
 				<img class="card-image img-responsive" ng-src="{{content.image}}">
 			<aside class="card-title-description">
 				<h2>{{content.title}}</h2>
-				<h5>Author:</h5><nav><a ng-href="#!/profile/{{content.uid}}">Placeholder for func to get author name</a></nav>
+				<span ng-if="content.uid">
+					<h5>Author:</h5>
+					<nav><a ng-href="#!/profile/{{content.uid}}">Placeholder for func to get author name</a></nav>
+				</span>
 				<label>Description: </label>
 				<p>{{content.description}}</p>
 			</aside>

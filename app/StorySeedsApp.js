@@ -4,6 +4,7 @@
 const app = angular.module('StorySeedsApp', [
   'ngRoute',
   'ngSanitize',
+  'ngTagsInput',
   'StorySeedsApp.version'
 ]);
 

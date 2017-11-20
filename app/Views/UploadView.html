@@ -1,24 +1,30 @@
 <div class="container">
 	<form>
 		<div class="form-group">
-			<label for="title">Title</label>
+			<label for="title">Title:</label>
 			<input type="text" class="form-control" ng-model="obj.title">
 		</div>
 		<div class="form-group">
-			<label for="image">Image-Url</label>
+			<label for="image">Image-Url:</label>
 			<input type="text" class="form-control" ng-model="obj.image">
 		</div>
 		<div class="form-group checkbox-group">
+			<label for="genre">Genre:</label>
 			<span class="form-check" id="checkboxes" ng-repeat="(key, value) in checkboxModel">
 				<label class="form-check-label checkbox-label" id="checkbox-label"> {{key}}: <input type="checkbox" class="form-check-input" name="{{key}}" ng-model="checkboxModel[key]" id="{{key}}Checkbox"></label>
 			</span>
 		</div>
 		<div class="form-group">
-			<label for="descripction">Description</label>
+			<label for="descripction">Description:</label>
 			<textarea type="textarea" maxlength="500" rows="5" class="form-control description-textarea" ng-model="obj.description" placeholder="{{placeholder.description}}"></textarea>
 		</div>
 		<div class="form-group">
-			<label for="content">Content</label>
+			<label for="tags">Tags:</label>
+			<tags-input class="bootstrap" ng-model="tags" replace-spaces-with-dashes="false">
+			</tags-input>
+		</div>
+		<div class="form-group">
+			<label for="content">Content:</label>
 			<textarea class="form-control content-textarea" maxlength="2000" rows="20" ng-model="obj.content"></textarea>
 		</div>
 			<button class="mybutton" ng-click="submit()">Submit</button>

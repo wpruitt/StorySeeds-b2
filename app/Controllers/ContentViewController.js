@@ -99,8 +99,8 @@ app.controller('ContentViewController', [
                     $('.modal-backdrop').remove();
                     console.log("response", response);
                     console.log("scope.content.uid", $scope.content.uid);
-                    if ($scope.content.seedId) {
-                        $location.url(`/content/${$scope.content.seedId}`);
+                    if ($scope.content.branchedfrom) {
+                        $location.url(`/content/${$scope.content.branchedfrom}`);
                         $route.reload();
                     }else{
                         $location.url('/explore');

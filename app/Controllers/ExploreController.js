@@ -8,6 +8,11 @@ app.controller('ExploreController', [
     'FBDataFactory', 
     function($scope, $location, FBDataFactory) {
         
+        $scope.filter = "";
+        $scope.clearFilter = function(){
+            $scope.search = {};
+        };
+
         // Retrieve all available content and assign to scope
         FBDataFactory.getAllContent()
         .then((contents) => {

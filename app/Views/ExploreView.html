@@ -1,14 +1,21 @@
-<div class="filter-container container-fluid">
+<!-- <div class="filter-container container-fluid">
 	<input ng-model="search.$">
-	
-	<input type="radio" name="searchSelect" ng-model="search.$" oncchange="clearFilter()" checked="true" >All
-	<input type="radio" name="searchSelect" ng-model="search.type" oncchange="clearFilter()" value="branch">Branches
-	<input type="radio" name="searchSelect" ng-model="search.type" oncchange="clearFilter()" value="seed">Seeds
-</div>
+</div> -->
 
 
 	<div class="card-deck">
-		<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="content in contents | filter:search:strict">
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" ng-class="{active:isSelected(0)}">
+				<a href="" ng-click="select(0)" aria-controls="all menu" role="tab">All</a>
+			</li>
+			<li role="presentation" ng-class="{active:isSelected(1)}">
+				<a href="" ng-click="select(1)" aria-controls="branches" role="tab">Branches</a>
+			</li>
+			<li role="presentation" ng-class="{active:isSelected(2)}">
+				<a href="" ng-click="select(2)" aria-controls="seeds" role="tab">Seeds</a>
+			</li>
+		</ul>		
+			<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="content in contents | filter:filterText">
 			<h3 class="card-header"><span class="header-title">{{content.title}}<span></h3>
 			<a ng-click="getContent(content.id)">
 				<div class="card-block">

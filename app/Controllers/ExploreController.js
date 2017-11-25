@@ -15,19 +15,22 @@ app.controller('ExploreController', [
         // Set selected tab to 0
         $scope.tab = 0;
 
+        // 
+        $scope.searchText = '';
+
         $scope.filterText = '';
 
-        $scope.filters = ['', {type: 'branch'}, {type: 'seed'}];
+        $scope.filters = ["'' ||", {type: 'branch'}, "{type: 'seed'} ||"];
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;
             $scope.filterText = $scope.filters[setTab];
             console.log("selected");
-          };
+        };
           
-          $scope.isSelected = function(checkTab) {
+        $scope.isSelected = function(checkTab) {
             return ($scope.tab === checkTab);
-          };
+        };
 
         // Retrieve all available content and assign to scope
         FBDataFactory.getAllContent()

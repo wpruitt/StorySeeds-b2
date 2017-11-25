@@ -1,6 +1,6 @@
-<!-- <div class="filter-container container-fluid">
-	<input ng-model="search.$">
-</div> -->
+<div class="filter-container container-fluid">
+	<input ng-model="searchText">
+</div>
 
 
 	<div class="card-deck">
@@ -15,7 +15,7 @@
 				<a href="" ng-click="select(2)" aria-controls="seeds" role="tab">Seeds</a>
 			</li>
 		</ul>		
-			<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="content in contents | filter:filterText">
+			<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="content in contents | filter:filterText | filter:searchText">
 			<h3 class="card-header"><span class="header-title">{{content.title}}<span></h3>
 			<a ng-click="getContent(content.id)">
 				<div class="card-block">

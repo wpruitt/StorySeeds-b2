@@ -20,7 +20,7 @@ app.controller('ExploreController', [
 
         $scope.filterText = '';
 
-        $scope.filters = ["'' ||", {type: 'branch'}, "{type: 'seed'} ||"];
+        $scope.filters = ['', {type: 'branch'}, {type: 'seed'}];
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;

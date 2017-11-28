@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="globalNavBtnCollapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbarButton"><a href="#!/explore">Explore</a></li>
-                <li class="navbarButton" ng-if="isLoggedIn"><a ng-href="#!/myprofile/{{currentUser.uid}}">Profile</a></li>
+                <li class="navbarButton " ng-if="isLoggedIn"><a ng-href="#!/myprofile/{{currentUser.uid}}"><span class="glyphicon glyphicon-user"></span></a></li>
                 <li class="navbarButton"><a href="#!/upload">Plant Seed</a></li> 
                 <li class="navbarButton" ng-show="!isLoggedIn"><a href="#!/login">Login</a></li>
                 <li class="navbarButton" ng-show="isLoggedIn"><a href="#!/logout">Logout</a></li>

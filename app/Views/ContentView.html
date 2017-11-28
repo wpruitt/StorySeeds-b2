@@ -1,22 +1,32 @@
 <div class="container">
-	<div class="card">
-		<div class="card-block">
-			<span class="previous-link"><a ng-if="content.branchedfrom" ng-click="getBranch(content.branchedfrom)">&laquo;Previous</a></span>
-				<img class="card-image img-responsive" ng-src="{{content.image}}">
-			<aside class="card-title-description">
-				<h2>{{content.title}}</h2>
-				<span ng-if="content.uid">
-					<h5>Author:</h5>
-					<nav><a ng-href="#!/profile/{{content.uid}}">Placeholder for func to get author name</a></nav>
-				</span>
-				<label>Description: </label>
-				<p>{{content.description}}</p>
-			</aside>
+	<div class="card content-view-head-card col-xs-8 col-xs-offset-2">
+		<div class="previous-link col-xs-10 col-xs-offset-1">
+			<a ng-if="content.branchedfrom" ng-click="getBranch(content.branchedfrom)"><span class="responsive-text glyphicon glyphicon-step-backward"></span>Previous</a>
 		</div>
-		<span class="button-holder">
-			<button class="mybutton" ng-click="createBranch(content.id)">Create Branch</button>
-			<button class="mybutton" ng-if="showDelBtn(content.uid)" data-toggle="modal" data-target="#delModal">Delete Content</button>
-		</span>
+		<div class="card-block content-view-head-card-info col-xs-12">
+			<div class="content-view-img-title-author col-xs-12">
+				<div class="content-view-head-img col-xs-12 col-md-6">
+					<img class="img-responsive" ng-src="{{content.image}}">
+				</div>
+				<div class="content-view-head-title-author col-xs-12 col-md-6">
+					<h2 class="content-view-head-title col-xs-12">{{content.title}}</h2>
+					<span class="content-view-head-author col-xs-12" ng-if="content.uid">
+						<h5>Author:</h5>
+						<nav><a ng-href="#!/profile/{{content.uid}}">Placeholder for func to get author name</a></nav>
+					</span>
+				</div>
+			</div>
+			<div class="content-view-desc-btns col-xs-12">
+				<div class="content-view-desc col-xs-12">
+					<label>Description: </label>
+					<p>{{content.description}}</p>
+				</div>
+				<span class="button-holder col-xs-12">
+					<button class="mybutton" ng-click="createBranch(content.id)">Create Branch</button>
+					<button class="mybutton" ng-if="showDelBtn(content.uid)" data-toggle="modal" data-target="#delModal">Delete Content</button>
+				</span>
+			</div>
+		</div>
 	</div>
 </div>
 	<hr>
@@ -55,7 +65,7 @@
 		<h3 class="card-header"><span class="header-title">{{branch.title}}</span></h3>
 		<a ng-click="getBranch(branch.id)">
 			<div class="card-block">
-				<div class="card-image img-responsive img-thumbnail" style="background-image: url('{{branch.image}}')">
+				<div class="card-img img-responsive img-thumbnail" style="background-image: url('{{branch.image}}')">
 				</div>
 				<aside class="card-description">
 					<p>{{branch.description}}</p>

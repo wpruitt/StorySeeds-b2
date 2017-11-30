@@ -15,17 +15,18 @@
 				<a href="" ng-click="select(2)" aria-controls="seeds" role="tab">Seeds</a>
 			</li>
 		</ul>		
-			<div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="content in contents | filter:filterText | filter:searchText">
-			<h3 class="card-header"><span class="header-title">{{content.title}}<span></h3>
-			<a ng-click="getContent(content.id)">
-				<div class="card-block">
-					<div class="card-image img-responsive img-thumbnail" style="background-image: url('{{content.image}}')">
-					</div>
-					<aside class="card-description">
+		<div class="content-repeat-card col-xs-12 col-md-6 col-lg-4" ng-repeat="content in contents | filter:searchText">
+			<h3 class="content-card-header col-xs-12">{{content.title}}</h3>
+			<div class="content-card-img-info col-xs-12">
+				<a ng-click="getContent(content.id)">
+						<div class="content-card-img col-xs-5 col-md-6" ng-style="{'background-image':'url({{content.image}})'}">
+								<!-- <img class="img-responsive" ng-src="{{content.image}}"> -->
+						</div>
+					<div class="content-card-info col-xs-7 col-md-6">
+						<h4>Author: (AuthorPH)</h4>
 						<p>{{content.description}}</p>
-					</aside>
-				</div>
-			</a>
-			<div class="card-footer"></div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>

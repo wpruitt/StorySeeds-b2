@@ -3,7 +3,7 @@
 </div>
 
 
-	<div class="card-deck">
+	<div class="content-card-container container-fluid">
 		<ul class="nav nav-tabs" role="tablist">
 			<li role="presentation" ng-class="{active:isSelected(0)}">
 				<a href="" ng-click="select(0)" aria-controls="all menu" role="tab">All</a>
@@ -19,9 +19,9 @@
 			<h3 class="content-card-header col-xs-12">{{content.title}}</h3>
 			<div class="content-card-img-info col-xs-12">
 				<a ng-click="getContent(content.id)">
-						<div class="content-card-img col-xs-5 col-md-6" ng-style="{'background-image':'url({{content.image}})'}">
-								<!-- <img class="img-responsive" ng-src="{{content.image}}"> -->
-						</div>
+					<div class="content-card-img col-xs-5 col-md-6" ng-style="{'background-image':'url({{content.image}})'}">
+							<!-- <img class="img-responsive" ng-src="{{content.image}}"> -->
+					</div>
 					<div class="content-card-info col-xs-7 col-md-6">
 						<h4>Author: (AuthorPH)</h4>
 						<p>{{content.description}}</p>

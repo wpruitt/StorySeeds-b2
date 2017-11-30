@@ -20,18 +20,28 @@
     <input class="filter" type="filter" placeholder="Filter" ng-model="searchText">
 </div>
     
-<div class="card-deck">
-    <div class="card col-xs-6 col-sm-4 col-md-4 col-lg-3"  ng-repeat="content in usersContents | filter:searchText">
-        <h3 class="card-header"><span class="header-title">{{content.title}}</span></h3>
+<div class="content-card-container container-fluid">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" ng-class="{active:isSelected(0)}">
+            <a href="" ng-click="select(0)" aria-controls="all menu" role="tab">All</a>
+        </li>
+        <li role="presentation" ng-class="{active:isSelected(1)}">
+            <a href="" ng-click="select(1)" aria-controls="branches" role="tab">Branches</a>
+        </li>
+        <li role="presentation" ng-class="{active:isSelected(2)}">
+            <a href="" ng-click="select(2)" aria-controls="seeds" role="tab">Seeds</a>
+        </li>
+    </ul>
+    <div class="content-repeat-card col-xs-12 col-md-6 col-lg-4"  ng-repeat="content in usersContents | filter:filterText | filter:searchText">
+        <h3 class="content-card-header col-xs-12">{{content.title}}</h3>
         <a ng-click="getContent(content.id)">
-            <div class="card-block">
-                <div class="card-image img-responsive img-thumbnail" style="background-image: url('{{content.image}}')">
-                </div>
-                <aside class="card-description">
-                    <p>{{content.description}}</p>
-                </aside>
+            <div class="content-card-img col-xs-5 col-md-6" ng-style="{'background-image':'url({{content.image}})'}">
+                <!-- <img class="img-responsive" ng-src="{{content.image}}"> -->
+            </div>
+            <div class="content-card-info col-xs-7 col-md-6">
+                <h4>Author: (AuthorPH)</h4>
+                <p>{{branch.description}}</p>
             </div>
         </a>
-        <div class="card-footer"></div>
     </div>
 </div>

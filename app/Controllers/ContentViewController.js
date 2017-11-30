@@ -12,8 +12,8 @@ app.controller('ContentViewController', [
     function($scope, UserService, $routeParams, $location, FBDataFactory, $route) {
 
         // Assigns current logged in user to currentUser variable
-        $scope.currentUserid = UserService.getCurrentUser().uid;
-        console.log("$scope.currentUserid", $scope.currentUserid);
+        $scope.currentUser = UserService.getCurrentUser();
+        console.log("$scope.currentUser", $scope.currentUser);
         let contentuid = {};
         $scope.$watch(
             "contentuid",
@@ -66,8 +66,8 @@ app.controller('ContentViewController', [
 
         // Assigns true/false based on equality of currentUser and content owner
         $scope.showDelBtn = function(x) {
-            console.log("current/content", $scope.currentUserid, x);
-            if($scope.currentUserid === x){
+            console.log("current/content", $scope.currentUser.uid, x);
+            if($scope.currentUser.uid === x){
                 return true;
             }else{
                 return false;

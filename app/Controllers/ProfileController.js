@@ -15,6 +15,30 @@ app.controller('ProfileController', [
         // Instantiate userKey variable as empty string
         let userKey = "";
 
+		/* Original example for Tab/Filter system taken from:
+        [Luis José Sánchez]{@link https://github.com/LuisJoseSanchez}
+        https://github.com/LuisJoseSanchez/angularjs-bootstrap-tabs-filter-example
+        */
+        // Set selected tab to 0
+        $scope.tab = 0;
+
+		// 
+		$scope.searchText = '';
+
+		$scope.filterText = '';
+
+		$scope.filters = ['', {type: 'branch'}, {type: 'seed'}];
+
+		$scope.select = function(setTab) {
+			$scope.tab = setTab;
+			$scope.filterText = $scope.filters[setTab];
+			console.log("selected");
+		};
+			
+		$scope.isSelected = function(checkTab) {
+			return ($scope.tab === checkTab);
+		};
+
         // On page load => retrieve current logged in user
         FBDataFactory.getUser($routeParams.userId)
         // assigns userData to user variable and profile data to

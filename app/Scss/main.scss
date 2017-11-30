@@ -11,5 +11,27 @@ body {
     font-weight: lighter;
 }
 
+// Branch Cards
+
+.content-card-img-info {
+    height: 150px;
+    overflow: hidden;
+}
+
+.content-card-img {
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.content-card-info {
+    height: 150px;
+    min-width: 200px;
+    overflow-y: hidden;
+}
+
+
 @import '_Navbar';
 @import '_ContentView';

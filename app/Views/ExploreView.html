@@ -15,7 +15,7 @@
 				<a href="" ng-click="select(2)" aria-controls="seeds" role="tab">Seeds</a>
 			</li>
 		</ul>		
-		<div class="content-repeat-card col-xs-12 col-md-6 col-lg-4" ng-repeat="content in contents | filter:searchText">
+		<div class="content-repeat-card col-xs-12 col-md-6 col-lg-4" ng-repeat="content in contents | filter:filterText | filter:searchText">
 			<h3 class="content-card-header col-xs-12">{{content.title}}</h3>
 			<div class="content-card-img-info col-xs-12">
 				<a ng-click="getContent(content.id)">

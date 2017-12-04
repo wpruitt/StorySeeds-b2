@@ -1,21 +1,11 @@
 'use strict';
 
 // AuthorDisplayNameDirective:
-// Displays AuthorDisplayName based on uid
-
-app.directive('authorDisplayNameDirective', [
-    'FBDataFactory', 
-    function(FBDataFactory) {
+// Manages data binding to upload content
+app.directive('authorDisplayName', [
+    function() {
         return {
-            template: `<h3>Author: {{authorDisplayName}}</h3>`,
-            bindings: {value: "="},
-            controller: ['FBDataFactory', '$scope', function($scope){
-                $scope.authorDisplayName = "";
-                FBDataFactory.authorDisplayName($scope.content.uid)
-                .then((author) => {
-                    console.log(author);
-                    $scope.authorDisplayName = author;
-                });
-            }]
+            template: `<h3>Author: {{displayNames[content.uid]}} </h3>`,
+            scope: false
         };
 }]);

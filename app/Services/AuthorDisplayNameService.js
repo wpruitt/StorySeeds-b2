@@ -11,6 +11,7 @@ app.service('AuthorDisplayNameService', [
                     this.displayNames[userObjs[key].uid] = userObjs[key].displayName;
                 }
             });
+            return this.displayNames;
         };
     }
 ]);

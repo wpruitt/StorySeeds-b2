@@ -9,8 +9,8 @@ app.controller('ExploreController', [
     'AuthorDisplayNameService', 
     function($scope, $location, FBDataFactory, AuthorDisplayNameService) {
 
-
-        console.log('ADNS', AuthorDisplayNameService.getDisplayNames());
+        // Creates object {uid:displayName} on scope
+        $scope.displayNames = AuthorDisplayNameService.getDisplayNames();
         /* Original example for Tab/Filter system taken from:
         [Luis José Sánchez]{@link https://github.com/LuisJoseSanchez}
         https://github.com/LuisJoseSanchez/angularjs-bootstrap-tabs-filter-example

@@ -10,6 +10,7 @@ app.controller('ProfileController', [
     '$route',
     '$routeParams',
     function($scope, FBAuthFactory, FBDataFactory, $location, $route, $routeParams) {
+		
         // Instantiate profile variable as empty string
         let profile = {};
         // Instantiate userKey variable as empty string

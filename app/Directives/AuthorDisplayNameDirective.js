@@ -5,7 +5,16 @@
 app.directive('authorDisplayName', [
     function() {
         return {
-            template: `<h3>Author: {{displayNames[content.uid]}} </h3>`,
-            scope: false
+            template: `<h3>Author: {{author}}</h3>`,
+            scope: {
+                uid: '=value'
+            },
+            link: function(scope, element, attrs) {
+                scope.displayNames = {};
+                if(scope.$parent.displayNames) {
+                    scope.displayNames = scope.$parent.displayNames;
+                }
+                scope.author = scope.displayNames[scope.uid];
+            }
         };
 }]);

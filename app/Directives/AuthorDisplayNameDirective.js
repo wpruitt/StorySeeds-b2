@@ -10,10 +10,7 @@ app.directive('authorDisplayName', [
                 uid: '=value'
             },
             link: function(scope, element, attrs) {
-                scope.displayNames = {};
-                if(scope.$parent.displayNames) {
-                    scope.displayNames = scope.$parent.displayNames;
-                }
+                scope.displayNames = scope.$parent.displayNames;     
                 scope.author = scope.displayNames[scope.uid];
             }
         };

@@ -95,6 +95,20 @@ app.factory('FBDataFactory', [
             });
         };
 
+        // Gets all users
+        const getAllUsers = () => {
+            return $q((resolve, reject) => {
+                console.log(`${FBCreds.databaseURL}/users.json`);
+                $http.get(`${FBCreds.databaseURL}/users.json`)
+                .then((usersObj) => {
+                    resolve(usersObj.data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+            });
+        };
+
         // Edits user object
         // Refactor: should be able to get patch to work properly
         const editProfile = (editedObj, userId) => {
@@ -201,6 +215,7 @@ app.factory('FBDataFactory', [
             getUsersContent,
             createUser,
             getUser,
+            getAllUsers,
             editProfile,
             createContent,
             addId,

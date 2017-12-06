@@ -12,7 +12,7 @@
 					<h2 class="content-view-head-title col-xs-12">{{content.title}}</h2>
 					<span class="content-view-head-author col-xs-12" ng-if="content.uid">
 						<h5>Author:</h5>
-						<nav><a ng-href="#!/profile/{{content.uid}}">Placeholder for func to get author name</a></nav>
+						<nav><a ng-href="#!/profile/{{content.uid}}"><author-display-name value="content.uid"></author-display-name></a></nav>
 					</span>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 						<!-- <img class="img-responsive" ng-src="{{branch.image}}"> -->
 				</div>
 				<div class="content-card-info col-xs-7 col-md-6">
-					<h4>Author: (AuthorPH)</h4>
+					<author-display-name value="branch.uid"></author-display-name>
 					<p>{{branch.description}}</p>
 				</div>
 			</a>

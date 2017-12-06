@@ -9,7 +9,11 @@ app.controller('ContentViewController', [
     '$location',
     'FBDataFactory',
     '$route',
-    function($scope, UserService, $routeParams, $location, FBDataFactory, $route) {
+    'AuthorDisplayNameService',
+    function($scope, UserService, $routeParams, $location, FBDataFactory, $route, AuthorDisplayNameService) {
+
+        // Creates object {uid:displayName} on scope
+        $scope.displayNames = AuthorDisplayNameService.getDisplayNames();
 
         // Assigns current logged in user to currentUser variable
         $scope.currentUser = UserService.getCurrentUser();

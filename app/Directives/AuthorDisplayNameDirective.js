@@ -5,7 +5,7 @@
 app.directive('authorDisplayName', [
     function() {
         return {
-            template: `<a ng-href="#!/profile/{{uid}}"><h3>Author: {{author}}</h3></a>`,
+            template: `<a ng-click="$event.stopPropagation();" ng-href="#!/profile/{{uid}}"><h3>Author: {{author}}</h3></a>`,
             scope: {
                 uid: '=value'
             },
